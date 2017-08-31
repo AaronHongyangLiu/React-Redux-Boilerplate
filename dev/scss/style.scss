@@ -1,5 +1,35 @@
 $primary: #006699;
+$fullLength: 100%;
+$LightGrey: #BDBDBD;
+
+html,body{ margin:0; padding:0; height:100%; width:100%;background: #FFFFFF; }
+
+.fullScreen{
+  width:$fullLength;
+  height: $fullLength;
+}
 
 h2 {
-	color: $primary;
+  color: $primary;
+}
+
+.sideBar {
+  float:left;
+  background: $LightGrey;
+  height:100%;
+  width:10%;
+  overflow: hidden;
+}
+
+.mainPage{
+  float:right;
+  width:90%;
+  overflow:auto;
+}
+
+.tableRow{
+  height: 1em;
+}
+.noPadding {
+  margin: 0;
 }

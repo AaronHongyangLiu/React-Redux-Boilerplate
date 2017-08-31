@@ -1,16 +1,35 @@
 import React from 'react';
-import UserList from '../containers/user-list';
-import UserDetails from '../containers/user-detail';
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux';
+import {getAllEvents} from "../actions/index"
+import SideBar from './SideBar'
+import SchedulePage from './SchedulePage'
 require('../../scss/style.scss');
 
-const App = () => (
-    <div>
-        <h2>User List</h2>
-        <UserList />
-        <hr />
-        <h2>User Details</h2>
-        <UserDetails />
-    </div>
-);
+// const App = () => (
+//     <div className="fullScreen">
+//         <SideBar />
+//         <SchedulePage/>
+//     </div>
+// );
 
-export default App;
+class App extends React.Component {
+    componentWillMount(){
+        this.props.getEvents();
+    }
+
+    render(){
+        return(
+            <div className="fullScreen">
+                <SideBar />
+                <SchedulePage/>
+            </div>
+        )
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getEvents:getAllEvents},dispatch)
+}
+
+export default connect(null,mapDispatchToProps)(App);
